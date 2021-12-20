@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import { useLayoutEffect, useState } from "react";
+import Tilt from "react-parallax-tilt";
 
 const io = (className) =>
 	new IntersectionObserver((entries, observer) => {
@@ -32,79 +33,11 @@ const App = () => {
 
 		io("fadeLeft").observe(document.querySelector(".weAlsoCard"));
 		io("skewX").observe(document.querySelector(".weAlsoBg"));
+		io("fadeZoom").observe(document.querySelector(".landingIntro"));
+		io("fadeZoom").observe(document.querySelector(".weAlsoText"));
 
 		document.addEventListener("scroll", () => {
 			setDown(window.scrollY / 10);
-		});
-	}, []);
-
-	useLayoutEffect(() => {
-		const containers = document.querySelectorAll(".serviceCardContainer");
-		const inners = document.querySelectorAll(".serviceCardInner");
-		containers.forEach((container, i) => {
-			(function () {
-				const mouse = {
-					_x: 0,
-					_y: 0,
-					x: 0,
-					y: 0,
-					updatePosition: function (event) {
-						var e = event || window.event;
-						this.x = e.clientX - this._x;
-						this.y = (e.clientY - this._y) * -1;
-					},
-					setOrigin: function (e) {
-						this._x = e.offsetLeft + Math.floor(e.offsetWidth / 2);
-						this._y = e.offsetTop + Math.floor(e.offsetHeight / 2);
-					},
-					show: function () {
-						return "(" + this.x + ", " + this.y + ")";
-					},
-				};
-
-				mouse.setOrigin(container);
-
-				let counter = 0;
-				const updateRate = 10;
-				const isTimeToUpdate = function () {
-					return counter++ % updateRate === 0;
-				};
-
-				const onMouseEnterHandler = function (event) {
-					update(event);
-				};
-
-				const onMouseLeaveHandler = function () {
-					inners[i].style = "";
-				};
-
-				const onMouseMoveHandler = function (event) {
-					if (isTimeToUpdate()) {
-						update(event);
-					}
-				};
-
-				const update = function (event) {
-					mouse.updatePosition(event);
-					updateTransformStyle(
-						(mouse.y / inners[i].offsetHeight / 2).toFixed(2),
-						(mouse.x / inners[i].offsetWidth / 2).toFixed(2)
-					);
-				};
-
-				const updateTransformStyle = function (x, y) {
-					const style = "rotateX(" + x + "deg) rotateY(" + y + "deg)";
-					inners[i].style.transform = style;
-					inners[i].style.webkitTransform = style;
-					inners[i].style.mozTransform = style;
-					inners[i].style.msTransform = style;
-					inners[i].style.oTransform = style;
-				};
-
-				container.onmouseenter = onMouseEnterHandler;
-				container.onmouseleave = onMouseLeaveHandler;
-				container.onmousemove = onMouseMoveHandler;
-			})();
 		});
 	}, []);
 
@@ -115,7 +48,7 @@ const App = () => {
 				{/* landing */}
 				<Box sx={classes.landingContainer}>
 					<Box sx={classes.landingContent}>
-						<Box sx={classes.landingIntro}>
+						<Box sx={classes.landingIntro} className="landingIntro">
 							<Box
 								component="section"
 								sx={{
@@ -144,23 +77,17 @@ const App = () => {
 							</Box>
 							<Box sx={{ ...classes.anchorCard, position: "relative" }}>
 								<Typography paragraph>About us</Typography>
-								{/* <img
-									src="/assets/key.png"
-									width={500}
-									height={"auto"}
-									style={{
-										position: "absolute",
-										right: 0,
-										top: 0,
-									}}
-								/> */}
 							</Box>
 						</Box>
 					</Box>
 				</Box>
 
 				{/* about us */}
-				<Box sx={{ backgroundColor: colors.grey[200] }}>
+				<Box
+					sx={{
+						backgroundColor: colors.grey[200],
+					}}
+				>
 					<Box
 						sx={{
 							maxWidth: 1600,
@@ -181,42 +108,67 @@ const App = () => {
 							</Typography>
 							<Typography
 								variant="h3"
-								sx={{ fontWeight: "bold", mt: 1, mb: 5, lineHeight: 1.3 }}
+								sx={{ fontWeight: 900, mt: 1, mb: 5, lineHeight: 1.3 }}
 							>
 								The meaning of{" "}
-								<span
+								<div
 									style={{
-										textDecoration: "underline",
+										position: "relative",
+										display: "inline-block",
 										textDecorationThickness: 5,
 										textDecorationColor: colors.yellow[800],
 									}}
 								>
-									CYRA
-								</span>{" "}
+									<Box
+										component="span"
+										sx={{
+											position: "relative",
+											zIndex: 1,
+											"&::before": {
+												content: `""`,
+												display: "inline-block",
+												height: 10,
+												width: 140,
+												backgroundColor: colors.yellow[800],
+												position: "absolute",
+												bottom: 7.5,
+												left: 0,
+												zIndex: -1,
+											},
+										}}
+									>
+										CYRA
+									</Box>
+								</div>{" "}
 								comes from greek meaning comes from the <i>SUN</i>.
 							</Typography>
 							<Box>
-								<Typography variant="h5" sx={{ fontWeight: "bold", mb: 1 }}>
+								<Typography variant="h5" sx={{ fontWeight: 900, mb: 2 }}>
 									Lorem ipsum
 								</Typography>
 								<Typography
 									paragraph
-									sx={{ fontSize: "1.25rem", fontWeight: "light" }}
+									sx={{
+										fontSize: "1.375rem",
+										fontWeight: "light",
+										lineHeight: 1.75,
+									}}
 								>
 									Founded and registered in the year 2021. The company's first
 									project is a farm project near Madurai.
 								</Typography>
 							</Box>
 							<Box>
-								<Typography
-									variant="h5"
-									sx={{ fontWeight: "bold", mt: 5, mb: 1 }}
-								>
+								<Typography variant="h5" sx={{ fontWeight: 900, mt: 5, mb: 2 }}>
 									Lorem ipsum
 								</Typography>
 								<Typography
 									paragraph
-									sx={{ fontSize: "1.25rem", fontWeight: "light" }}
+									sx={{
+										fontSize: "1.375rem",
+										fontWeight: "light",
+										lineHeight: 1.75,
+									}}
 								>
 									The farm project consists of one acre plots roughly costing 10
 									to 20 lakhs.
@@ -265,19 +217,13 @@ const App = () => {
 
 						<Box sx={classes.serviceGrid}>
 							{[1, 2, 3, 4, 5, 6].map((i) => (
-								<Box
-									key={i}
-									className="serviceCardContainer"
-									sx={{
-										perspective: 125,
-									}}
-								>
-									<Box sx={classes.serviceCard} className="serviceCardInner">
+								<Tilt key={i}>
+									<Box sx={classes.serviceCard}>
 										<Typography paragraph>
 											Property Management Services
 										</Typography>
 									</Box>
-								</Box>
+								</Tilt>
 							))}
 						</Box>
 					</Box>
@@ -305,7 +251,7 @@ const App = () => {
 								className="weAlsoCard"
 								variant="h3"
 								sx={{
-									fontWeight: "bold",
+									fontWeight: 900,
 									backgroundColor: colors.grey[50],
 									p: 5,
 									maxWidth: 500,
@@ -320,6 +266,7 @@ const App = () => {
 								We also do buying and selling of properties.
 							</Typography>
 							<Typography
+								className="weAlsoText"
 								sx={{
 									p: 5,
 									maxWidth: 400,
@@ -329,6 +276,7 @@ const App = () => {
 									mr: 2.5,
 									fontWeight: "light",
 									lineHeight: 1.75,
+									transform: "scale(1.25)",
 								}}
 							>
 								The farm project consists of one acre plots roughly costing from
@@ -336,6 +284,7 @@ const App = () => {
 							</Typography>
 
 							<Box
+								className="weAlsoText"
 								sx={{
 									height: 60,
 									width: 200,
@@ -372,7 +321,7 @@ const App = () => {
 							py: 15,
 						}}
 					>
-						<Typography variant="h3" sx={{ fontWeight: "bold", mb: 7.5 }}>
+						<Typography variant="h3" sx={{ fontWeight: 900, mb: 7.5 }}>
 							Gallery
 						</Typography>
 
@@ -423,7 +372,7 @@ const App = () => {
 							mx: "auto",
 						}}
 					>
-						<Typography variant="h3" sx={{ fontWeight: "bold", mb: 7.5 }}>
+						<Typography variant="h3" sx={{ fontWeight: 900, mb: 7.5 }}>
 							Contact form
 						</Typography>
 						<Box
@@ -439,7 +388,7 @@ const App = () => {
 									component="label"
 									htmlFor="fullName"
 									sx={{
-										fontWeight: "bold",
+										fontWeight: 900,
 										display: "inline-block",
 										mb: 1,
 										fontSize: 24,
@@ -447,14 +396,18 @@ const App = () => {
 								>
 									Enter your full name
 								</Typography>
-								<Input placeholder="Name" fullWidth sx={{ py: 1 }} />
+								<Input
+									placeholder="Name"
+									fullWidth
+									sx={{ py: 1, fontSize: 20 }}
+								/>
 							</Box>
 							<Box sx={{ gridRow: "1", gridColumn: "2" }}>
 								<Typography
 									component="label"
 									htmlFor="fullName"
 									sx={{
-										fontWeight: "bold",
+										fontWeight: 900,
 										display: "inline-block",
 										mb: 1,
 										fontSize: 24,
@@ -462,14 +415,18 @@ const App = () => {
 								>
 									Enter your full name
 								</Typography>
-								<Input placeholder="Name" fullWidth sx={{ py: 1 }} />
+								<Input
+									placeholder="Name"
+									fullWidth
+									sx={{ py: 1, fontSize: 20 }}
+								/>
 							</Box>
 							<Box sx={{ gridRow: "2", gridColumn: "1" }}>
 								<Typography
 									component="label"
 									htmlFor="fullName"
 									sx={{
-										fontWeight: "bold",
+										fontWeight: 900,
 										display: "inline-block",
 										mb: 1,
 										fontSize: 24,
@@ -477,14 +434,18 @@ const App = () => {
 								>
 									Enter your full name
 								</Typography>
-								<Input placeholder="Name" fullWidth sx={{ py: 1 }} />
+								<Input
+									placeholder="Name"
+									fullWidth
+									sx={{ py: 1, fontSize: 20 }}
+								/>
 							</Box>
 							<Box sx={{ gridRow: "2", gridColumn: "2" }}>
 								<Typography
 									component="label"
 									htmlFor="fullName"
 									sx={{
-										fontWeight: "bold",
+										fontWeight: 900,
 										display: "inline-block",
 										mb: 1,
 										fontSize: 24,
@@ -492,14 +453,18 @@ const App = () => {
 								>
 									Enter your full name
 								</Typography>
-								<Input placeholder="Name" fullWidth sx={{ py: 1 }} />
+								<Input
+									placeholder="Name"
+									fullWidth
+									sx={{ py: 1, fontSize: 20 }}
+								/>
 							</Box>
 							<Box sx={{ gridRow: "3", gridColumn: "1/3" }}>
 								<Typography
 									component="label"
 									htmlFor="fullName"
 									sx={{
-										fontWeight: "bold",
+										fontWeight: 900,
 										display: "inline-block",
 										mb: 1,
 										fontSize: 24,
@@ -507,7 +472,11 @@ const App = () => {
 								>
 									Enter your full name
 								</Typography>
-								<Input placeholder="Name" fullWidth sx={{ py: 1 }} />
+								<Input
+									placeholder="Name"
+									fullWidth
+									sx={{ py: 1, fontSize: 20 }}
+								/>
 							</Box>
 							<Box
 								sx={{
@@ -551,13 +520,13 @@ const App = () => {
 							}}
 						>
 							<Box sx={{ gridRow: "1", gridColumn: "1" }}>
-								<Typography sx={{ fontWeight: "bold", fontSize: 27 }}>
+								<Typography sx={{ fontWeight: 900, fontSize: 27 }}>
 									Logo
 								</Typography>
 								<Typography
 									sx={{
 										fontWeight: "light",
-										fontSize: 20,
+										fontSize: 22,
 										mt: 1.5,
 										color: colors.grey[400],
 										lineHeight: 1.8,
@@ -569,13 +538,13 @@ const App = () => {
 							</Box>
 
 							<Box sx={{ gridRow: "1", gridColumn: "2" }}>
-								<Typography sx={{ fontWeight: "bold", fontSize: 27 }}>
+								<Typography sx={{ fontWeight: 900, fontSize: 27 }}>
 									Contact
 								</Typography>
 								<Typography
 									sx={{
 										fontWeight: "light",
-										fontSize: 20,
+										fontSize: 22,
 										mt: 1.5,
 										color: colors.grey[400],
 										lineHeight: 1.8,
@@ -588,7 +557,7 @@ const App = () => {
 							</Box>
 
 							<Box sx={{ gridRow: "1/3", gridColumn: "3" }}>
-								<Typography sx={{ fontWeight: "bold", fontSize: 27 }}>
+								<Typography sx={{ fontWeight: 900, fontSize: 27 }}>
 									Location
 								</Typography>
 								<Typography
@@ -616,13 +585,13 @@ const App = () => {
 							</Box>
 
 							<Box sx={{ gridRow: "2", gridColumn: "1" }}>
-								<Typography sx={{ fontWeight: "bold", fontSize: 27 }}>
+								<Typography sx={{ fontWeight: 900, fontSize: 27 }}>
 									Social Media
 								</Typography>
 								<Typography
 									sx={{
 										fontWeight: "light",
-										fontSize: 20,
+										fontSize: 22,
 										mt: 1.5,
 										color: colors.grey[400],
 										lineHeight: 1.8,
@@ -637,13 +606,13 @@ const App = () => {
 							</Box>
 
 							<Box sx={{ gridRow: "2", gridColumn: "2" }}>
-								<Typography sx={{ fontWeight: "bold", fontSize: 27 }}>
+								<Typography sx={{ fontWeight: 900, fontSize: 27 }}>
 									Address
 								</Typography>
 								<Typography
 									sx={{
 										fontWeight: "light",
-										fontSize: 20,
+										fontSize: 22,
 										mt: 1.5,
 										color: colors.grey[400],
 										lineHeight: 1.8,
@@ -705,13 +674,15 @@ const useStyles = (theme) => ({
 		maxWidth: 600,
 		height: 350,
 		overflow: "hidden",
+		opacity: 0,
+		transform: "scale(1.25)",
 		"& h2": {
-			fontWeight: "bold",
+			fontWeight: 900,
 			color: colors.grey[50],
 		},
 
 		"& p": {
-			fontSize: 27,
+			fontSize: 32,
 			mt: 3,
 			mb: 5,
 			color: colors.grey[200],
@@ -774,7 +745,7 @@ const useStyles = (theme) => ({
 		},
 
 		"& p": {
-			fontSize: 20,
+			fontSize: 27,
 			color: colors.grey[50],
 		},
 	},
@@ -804,7 +775,7 @@ const useStyles = (theme) => ({
 		mx: "auto",
 		px: 12.5,
 		py: 15,
-		"& h3": { fontWeight: "bold", mb: 7.5 },
+		"& h3": { fontWeight: 900, mb: 7.5 },
 	},
 	serviceGrid: {
 		display: "grid",
@@ -830,7 +801,6 @@ const useStyles = (theme) => ({
 			boxShadow: "0px 0px 15px -7.5px rgb(0,0,0)",
 		},
 	},
-
 	submitBtn: {
 		textTransform: "capitalize",
 		backgroundColor: colors.yellow[800],

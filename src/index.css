@@ -1,16 +1,18 @@
 * {
 	box-sizing: border-box;
+	font-family: "Satoshi", sans-serif !important;
 }
 
 body {
 	min-height: 100vh;
 	width: 100vw;
-	overflow-x: hidden;
+	overflow-x: hidden !important;
 }
 
 .app {
 	min-height: 100vh;
 	width: 100%;
+	overflow-x: hidden !important;
 }
 
 .active {
@@ -20,13 +22,19 @@ body {
 
 .fadeLeft {
 	opacity: 1 !important;
-	margin-right: -75px !important;
+	margin-right: -100px !important;
 	transition: 1.75s ease;
 }
 
 .skewX {
 	transform: skewX(0deg) !important;
 	transition: 1.5s ease;
+}
+
+.fadeZoom {
+	opacity: 1 !important;
+	transform: scale(1) !important;
+	transition: all 1s ease;
 }
 
 @keyframes zeroToFull {
