@@ -34,7 +34,7 @@ const App = () => {
 		io("skewX").observe(document.querySelector(".weAlsoBg"));
 
 		document.addEventListener("scroll", () => {
-			setDown(document.documentElement.scrollTop / 10);
+			setDown(window.scrollY / 10);
 		});
 	}, []);
 
@@ -610,6 +610,7 @@ const App = () => {
 										marginWidth="0"
 										src="https://www.openstreetmap.org/export/embed.html?bbox=79.73121643066408%2C12.774973346083751%2C80.63758850097658%2C13.391623526422052&amp;layer=mapnik"
 										style={{ borderRadius: "10px" }}
+										title="null"
 									/>
 								</Typography>
 							</Box>
