@@ -66,6 +66,8 @@ const App = () => {
 								sx={{
 									mt: down,
 									transition: "all .2s ease",
+									WebkitTransition: "all .2s ease",
+									MozTransition: "all .2s ease",
 								}}
 							>
 								<Typography component="h2" variant="h1">
