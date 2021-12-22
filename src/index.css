@@ -2,41 +2,49 @@
 	box-sizing: border-box;
 	font-family: "Satoshi", sans-serif !important;
 }
-
 body {
 	min-height: 100vh;
 	width: 100vw;
 	overflow-x: hidden !important;
 }
-
 .app {
 	min-height: 100vh;
 	width: 100%;
-	/* overflow-x: hidden !important; */
 }
-
 .active {
 	width: 350px !important;
 	transition: 1.25s ease;
 }
-
 .fadeLeft {
 	opacity: 1 !important;
 	margin-right: -100px !important;
 	transition: 1.75s ease;
 }
-
-.skewX {
-	transform: skewX(0deg) !important;
-	transition: 1.5s ease;
+.fadeLeft2 {
+	width: 100% !important;
+	transition: 1.5s ease-in;
 }
-
+.skewX {
+	transform: skew(0deg, 0deg) !important;
+	transition: 1.75s ease;
+}
 .fadeZoom {
 	opacity: 1 !important;
 	transform: scale(1) !important;
 	transition: all 1s ease;
 }
-
+.fadeUp1 {
+	transform: translateY(0rem) !important;
+	transition: all 0.8s ease !important;
+}
+.fadeUp2 {
+	transform: translateY(0rem) !important;
+	transition: all 1s ease !important;
+}
+.fadeUp3 {
+	transform: translateY(0rem) !important;
+	transition: all 1.2s ease !important;
+}
 @keyframes zeroToFull {
 	0% {
 		width: 0%;
@@ -45,8 +53,7 @@ body {
 		width: 100%;
 	}
 }
-
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 850px) {
 	.app {
 		overflow-x: hidden !important;
 	}

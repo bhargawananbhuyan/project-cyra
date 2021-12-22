@@ -20,6 +20,16 @@ const io = (className) =>
 		});
 	});
 
+const formIo = (time) =>
+	new IntersectionObserver((entries, observer) => {
+		entries.forEach((entry) => {
+			entry.intersectionRatio > 0 &&
+				entry.target.animate([{ transform: "translateY(0)" }], {
+					duration: time,
+				});
+		});
+	});
+
 const App = () => {
 	const theme = useTheme();
 	const classes = useStyles(theme);
@@ -31,13 +41,25 @@ const App = () => {
 			io("active").observe(el);
 		});
 
+		document.querySelectorAll(".forFadeUp").forEach((el, i) => {
+			io(`fadeUp${i + 1}`).observe(el);
+		});
+
 		io("fadeLeft").observe(document.querySelector(".weAlsoCard"));
 		io("skewX").observe(document.querySelector(".weAlsoBg"));
 		io("fadeZoom").observe(document.querySelector(".landingIntro"));
-		io("fadeZoom").observe(document.querySelector(".weAlsoText"));
+		io("fadeUp1").observe(document.querySelector(".weAlsoText"));
+		io("fadeUp2").observe(document.querySelector(".weAlsoBtn"));
+		document.querySelectorAll(".forFadeLeft").forEach((el) => {
+			io("fadeLeft2").observe(el);
+		});
 
 		document.addEventListener("scroll", () => {
 			setDown(window.scrollY / 10);
+		});
+
+		document.querySelectorAll(".input").forEach((el, i) => {
+			io(`fadeUp${(i % 3) + 1}`).observe(el);
 		});
 	}, []);
 
@@ -49,7 +71,13 @@ const App = () => {
 				<Box sx={classes.landingContainer}>
 					<Box sx={classes.landingContent}>
 						<Box sx={classes.landingIntro} className="landingIntro">
-							<Box component="section" sx={{ mt: down }}>
+							<Box
+								component="section"
+								sx={{
+									mt: down,
+									transition: "all .1s ease",
+								}}
+							>
 								<Typography component="h2" variant="h1">
 									Cyra
 								</Typography>
@@ -106,6 +134,9 @@ const App = () => {
 								"& h5": { fontSize: 21 },
 								"& p": { fontSize: "1.2rem" },
 							},
+							"& .forFadeUp": {
+								transform: "translateY(2.5rem)",
+							},
 						}}
 					>
 						<Box sx={{ maxWidth: 500 }}>
@@ -152,7 +183,7 @@ const App = () => {
 								</div>{" "}
 								comes from greek meaning comes from the <i>SUN</i>.
 							</Typography>
-							<Box>
+							<Box className="forFadeUp">
 								<Typography variant="h5" sx={{ fontWeight: 900, mb: 2 }}>
 									Lorem ipsum
 								</Typography>
@@ -168,7 +199,7 @@ const App = () => {
 									project is a farm project near Madurai.
 								</Typography>
 							</Box>
-							<Box>
+							<Box className="forFadeUp">
 								<Typography variant="h5" sx={{ fontWeight: 900, mt: 5, mb: 2 }}>
 									Lorem ipsum
 								</Typography>
@@ -186,6 +217,7 @@ const App = () => {
 							</Box>
 
 							<Button
+								className="forFadeUp"
 								sx={{ ...classes.aboutBtn, mt: 5 }}
 								variant="contained"
 								disableElevation
@@ -233,17 +265,28 @@ const App = () => {
 						<Typography
 							variant="h3"
 							sx={{
+								position: "relative",
 								[theme.breakpoints.down("md")]: {
 									fontSize: 32,
 								},
 							}}
 						>
-							Services
+							<Box
+								className="forFadeLeft"
+								sx={{
+									position: "absolute",
+									width: 0,
+									overflow: "hidden",
+									whiteSpace: "nowrap",
+								}}
+							>
+								Services
+							</Box>
 						</Typography>
 
 						<Box sx={classes.serviceGrid}>
 							{[1, 2, 3, 4, 5, 6].map((i) => (
-								<Tilt key={i}>
+								<Tilt key={i} tiltReverse={true} perspective={500}>
 									<Box sx={classes.serviceCard}>
 										<Typography paragraph>
 											Property Management Services
@@ -306,6 +349,7 @@ const App = () => {
 										py: 5,
 										textAlign: "center",
 										fontSize: 32,
+										backgroundColor: "transparent",
 									},
 								}}
 							>
@@ -330,6 +374,7 @@ const App = () => {
 										px: 3.5,
 										pt: 0,
 									},
+									transform: "translateY(2rem)",
 								}}
 							>
 								The farm project consists of one acre plots roughly costing from
@@ -348,6 +393,7 @@ const App = () => {
 										m: 0,
 										mb: 10,
 									},
+									transform: "translateY(2rem)",
 								}}
 							/>
 						</Box>
@@ -356,9 +402,10 @@ const App = () => {
 							sx={{
 								height: 650,
 								width: 650,
-								transform: "skewX(10deg)",
+								transform: "skew(0deg, 3.5deg)",
 								transition: "1s ease",
 								backgroundColor: colors.yellow[800],
+								boxShadow: `10px 10px 50px -15px ${colors.yellow[800]}`,
 								[theme.breakpoints.down("md")]: {
 									height: 350,
 									width: 350,
@@ -386,13 +433,30 @@ const App = () => {
 								py: 10,
 								"& h3": {
 									fontSize: 32,
-									mb: 5,
+									mb: 10,
 								},
 							},
 						}}
 					>
-						<Typography variant="h3" sx={{ fontWeight: 900, mb: 7.5 }}>
-							Gallery
+						<Typography
+							variant="h3"
+							sx={{
+								fontWeight: 900,
+								position: "relative",
+								mb: 15,
+							}}
+						>
+							<Box
+								className="forFadeLeft"
+								sx={{
+									position: "absolute",
+									width: 0,
+									overflow: "hidden",
+									whiteSpace: "nowrap",
+								}}
+							>
+								Gallery
+							</Box>
 						</Typography>
 
 						<Box
@@ -417,8 +481,19 @@ const App = () => {
 									backgroundColor: colors.grey[400],
 									gridRow: "1",
 									gridColumn: "1",
+									"& img": {
+										objectFit: "cover",
+										transition: "all 1s ease",
+										"&:hover": {
+											transform: "scale(1.25)",
+											transition: "all 1s ease",
+										},
+									},
+									overflow: "hidden",
 								}}
-							/>
+							>
+								<img src={"/assets/landing.jpg"} width="100%" height="100%" />
+							</Box>
 							<Box
 								sx={{
 									backgroundColor: colors.grey[400],
@@ -454,13 +529,30 @@ const App = () => {
 								py: 10,
 								"& h3": {
 									fontSize: 32,
-									mb: 5,
+									mb: 10,
 								},
 							},
 						}}
 					>
-						<Typography variant="h3" sx={{ fontWeight: 900, mb: 7.5 }}>
-							Contact form
+						<Typography
+							variant="h3"
+							sx={{
+								fontWeight: 900,
+								mb: 15,
+								position: "relative",
+							}}
+						>
+							<Box
+								className="forFadeLeft"
+								sx={{
+									position: "absolute",
+									overflow: "hidden",
+									width: 0,
+									whiteSpace: "nowrap",
+								}}
+							>
+								Contact form
+							</Box>
 						</Typography>
 						<Box
 							sx={{
@@ -479,9 +571,12 @@ const App = () => {
 										fontSize: "1rem",
 									},
 								},
+								"& .input": {
+									transform: "translateY(2rem)",
+								},
 							}}
 						>
-							<Box sx={{ gridRow: "1", gridColumn: "1" }}>
+							<Box className="input" sx={{ gridRow: "1", gridColumn: "1" }}>
 								<Typography
 									component="label"
 									htmlFor="fullName"
@@ -500,7 +595,7 @@ const App = () => {
 									sx={{ py: 1, fontSize: 20 }}
 								/>
 							</Box>
-							<Box sx={{ gridRow: "1", gridColumn: "2" }}>
+							<Box className="input" sx={{ gridRow: "1", gridColumn: "2" }}>
 								<Typography
 									component="label"
 									htmlFor="fullName"
@@ -519,7 +614,7 @@ const App = () => {
 									sx={{ py: 1, fontSize: 20 }}
 								/>
 							</Box>
-							<Box sx={{ gridRow: "2", gridColumn: "1" }}>
+							<Box className="input" sx={{ gridRow: "2", gridColumn: "1" }}>
 								<Typography
 									component="label"
 									htmlFor="fullName"
@@ -538,7 +633,7 @@ const App = () => {
 									sx={{ py: 1, fontSize: 20 }}
 								/>
 							</Box>
-							<Box sx={{ gridRow: "2", gridColumn: "2" }}>
+							<Box className="input" sx={{ gridRow: "2", gridColumn: "2" }}>
 								<Typography
 									component="label"
 									htmlFor="fullName"
@@ -557,7 +652,7 @@ const App = () => {
 									sx={{ py: 1, fontSize: 20 }}
 								/>
 							</Box>
-							<Box sx={{ gridRow: "3", gridColumn: "1/3" }}>
+							<Box className="input" sx={{ gridRow: "3", gridColumn: "1/3" }}>
 								<Typography
 									component="label"
 									htmlFor="fullName"
@@ -577,6 +672,7 @@ const App = () => {
 								/>
 							</Box>
 							<Box
+								className="input"
 								sx={{
 									gridRow: "4",
 									gridColumn: "1/3",
@@ -900,7 +996,6 @@ const useStyles = (theme) => ({
 			height: 200,
 			width: 200,
 		},
-
 		[theme.breakpoints.between("sm", "lg")]: {
 			height: 300,
 			width: 300,
@@ -980,7 +1075,13 @@ const useStyles = (theme) => ({
 		mx: "auto",
 		px: 12.5,
 		py: 15,
-		"& h3": { fontWeight: 900, mb: 7.5 },
+		"& h3 div": {
+			display: "inline-block",
+			fontWeight: 900,
+			mb: 7.5,
+			position: "relative",
+			display: "inline-block",
+		},
 		[theme.breakpoints.down("md")]: {
 			px: 3.5,
 			py: 10,
@@ -1003,6 +1104,7 @@ const useStyles = (theme) => ({
 		justifyContent: "center",
 		backgroundColor: colors.grey[400],
 		transition: ".25s ease",
+		transformStyle: "preserve-3d",
 		"& p": {
 			height: 175,
 			maxWidth: 175,
@@ -1012,7 +1114,8 @@ const useStyles = (theme) => ({
 			fontWeight: "bold",
 			color: colors.grey[500],
 			fontSize: 20,
-			boxShadow: "0px 0px 15px -7.5px rgb(0,0,0)",
+			boxShadow: "0px 0px 30px -15px rgb(0,0,0)",
+			transform: "translateZ(60px)",
 		},
 		[theme.breakpoints.down("md")]: {
 			width: 350,
