@@ -22,13 +22,14 @@ const io = (className) =>
 
 const App = () => {
 	const theme = useTheme();
-	const classes = useStyles(theme);
 
 	let [down, setDown] = useState(0);
+	let [agDisplay, setAgDisplay] = useState(0);
+	const classes = useStyles(theme, agDisplay);
 
 	useLayoutEffect(() => {
-		document.querySelectorAll(".aboutCard").forEach((el) => {
-			io("active").observe(el);
+		document.querySelectorAll(".aboutCard").forEach((el, i) => {
+			io(`active${i + 1}`).observe(el);
 		});
 
 		document.querySelectorAll(".forFadeUp").forEach((el, i) => {
@@ -51,6 +52,10 @@ const App = () => {
 		document.querySelectorAll(".input").forEach((el, i) => {
 			io(`fadeUp${(i % 3) + 1}`).observe(el);
 		});
+
+		setTimeout(() => {
+			setAgDisplay(1);
+		}, 1000);
 	}, []);
 
 	return (
@@ -85,7 +90,7 @@ const App = () => {
 							</Box>
 						</Box>
 
-						<Box sx={classes.anchorGrid}>
+						<Box sx={{ ...classes.anchorGrid, opacity: agDisplay }}>
 							<Box sx={classes.anchorCard} id="contactUsCard">
 								<Typography paragraph>Contact us</Typography>
 							</Box>
@@ -128,6 +133,7 @@ const App = () => {
 							},
 							"& .forFadeUp": {
 								transform: "translateY(2.5rem)",
+								opacity: 0,
 							},
 						}}
 					>
@@ -873,7 +879,7 @@ const App = () => {
 	);
 };
 
-const useStyles = (theme) => ({
+const useStyles = (theme, agDisplay) => ({
 	landingContainer: {
 		height: "100vh",
 		backgroundColor: "transparent",
@@ -1009,7 +1015,7 @@ const useStyles = (theme) => ({
 				left: 0,
 				backgroundColor: colors.yellow[800],
 				zIndex: -1,
-				animation: "zeroToFull .75s linear",
+				animation: agDisplay && "zeroToFull .5s linear",
 			},
 		},
 		"&:nth-of-type(2)": {
@@ -1024,7 +1030,7 @@ const useStyles = (theme) => ({
 				left: 0,
 				backgroundColor: colors.grey[800],
 				zIndex: -1,
-				animation: "zeroToFull 1s linear",
+				animation: agDisplay && "zeroToFull .75s linear",
 			},
 		},
 
