@@ -30,20 +30,20 @@ body {
 .fadeLeft {
 	opacity: 1 !important;
 	margin-right: -100px !important;
-	transition: 1.75s ease;
+	transition: 1.75s ease !important;
 }
 .fadeLeft2 {
 	width: 100% !important;
-	transition: 1.5s ease-in;
+	transition: 1.5s ease-in !important;
 }
 .skewX {
 	transform: skew(0deg, 0deg) translateZ(0rem) !important;
-	transition: 1.75s ease;
+	transition: 1.75s ease !important;
 }
 .fadeZoom {
 	opacity: 1 !important;
 	transform: scale(1) !important;
-	transition: all 1s ease;
+	transition: all 1s ease !important;
 }
 .fadeUp1 {
 	transform: translateY(0rem) !important;
