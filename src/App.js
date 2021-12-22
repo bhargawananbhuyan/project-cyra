@@ -20,16 +20,6 @@ const io = (className) =>
 		});
 	});
 
-const formIo = (time) =>
-	new IntersectionObserver((entries, observer) => {
-		entries.forEach((entry) => {
-			entry.intersectionRatio > 0 &&
-				entry.target.animate([{ transform: "translateY(0)" }], {
-					duration: time,
-				});
-		});
-	});
-
 const App = () => {
 	const theme = useTheme();
 	const classes = useStyles(theme);
@@ -366,7 +356,6 @@ const App = () => {
 									mr: 2.5,
 									fontWeight: "light",
 									lineHeight: 1.75,
-									transform: "scale(1.25)",
 									[theme.breakpoints.down("md")]: {
 										textAlign: "center",
 										mr: 0,
@@ -492,7 +481,12 @@ const App = () => {
 									overflow: "hidden",
 								}}
 							>
-								<img src={"/assets/landing.jpg"} width="100%" height="100%" />
+								<img
+									src={"/assets/landing.jpg"}
+									width="100%"
+									height="100%"
+									alt=""
+								/>
 							</Box>
 							<Box
 								sx={{
@@ -1080,7 +1074,6 @@ const useStyles = (theme) => ({
 			fontWeight: 900,
 			mb: 7.5,
 			position: "relative",
-			display: "inline-block",
 		},
 		[theme.breakpoints.down("md")]: {
 			px: 3.5,
