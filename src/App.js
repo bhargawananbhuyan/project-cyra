@@ -96,6 +96,8 @@ const App = () => {
 							pb: 15,
 							[theme.breakpoints.down("md")]: {
 								flexDirection: "column",
+								alignItems: "center",
+								justifyContent: "center",
 								py: 12,
 								"& h3": {
 									fontSize: 32,
@@ -605,7 +607,7 @@ const App = () => {
 							mx: "auto",
 							[theme.breakpoints.down("md")]: {
 								px: 3.5,
-								py: 10,
+								py: 7.5,
 							},
 						}}
 					>
@@ -617,9 +619,20 @@ const App = () => {
 								color: colors.grey[50],
 								gap: 7.5,
 								placeContent: "space-between",
-								[theme.breakpoints.down("md")]: {
+								[theme.breakpoints.between("sm", "lg")]: {
 									display: "flex",
 									flexWrap: "wrap",
+									gap: 5,
+									"& .footer-header": {
+										fontSize: "1.5rem",
+									},
+									"& p": {
+										fontSize: "1.2rem",
+									},
+								},
+								[theme.breakpoints.down("sm")]: {
+									display: "flex",
+									flexDirection: "column",
 									gap: 5,
 									"& .footer-header": {
 										fontSize: "1.35rem",
@@ -675,46 +688,11 @@ const App = () => {
 								</Typography>
 							</Box>
 
-							<Box sx={{ gridRow: "1/3", gridColumn: "3" }}>
-								<Typography
-									sx={{ fontWeight: 900, fontSize: 27 }}
-									className="footer-header"
-								>
-									Location
-								</Typography>
-								<Typography
-									paragraph
-									sx={{
-										backgroundColor: colors.yellow[800],
-										height: "100%",
-										mt: 3.5,
-										fontSize: 20,
-										fontWeight: "light",
-										borderRadius: "10px",
-									}}
-								>
-									<iframe
-										width="100%"
-										height="100%"
-										frameBorder="0"
-										scrolling="no"
-										marginHeight="0"
-										marginWidth="0"
-										src="https://www.openstreetmap.org/export/embed.html?bbox=79.73121643066408%2C12.774973346083751%2C80.63758850097658%2C13.391623526422052&amp;layer=mapnik"
-										style={{ borderRadius: "10px" }}
-										title="null"
-									/>
-								</Typography>
-							</Box>
-
 							<Box sx={{ gridRow: "2", gridColumn: "1" }}>
 								<Typography
 									sx={{
 										fontWeight: 900,
 										fontSize: 27,
-										[theme.breakpoints.down("md")]: {
-											mt: 10,
-										},
 									}}
 									className="footer-header"
 								>
@@ -758,6 +736,41 @@ const App = () => {
 									Address Line #1
 									<br />
 									Line #2 with zipcode
+								</Typography>
+							</Box>
+
+							<Box sx={{ gridRow: "1/3", gridColumn: "3" }}>
+								<Typography
+									sx={{ fontWeight: 900, fontSize: 27 }}
+									className="footer-header"
+								>
+									Location
+								</Typography>
+								<Typography
+									paragraph
+									sx={{
+										backgroundColor: colors.yellow[800],
+										height: "100%",
+										mt: 3.5,
+										fontSize: 20,
+										fontWeight: "light",
+										borderRadius: "10px",
+										[theme.breakpoints.down("md")]: {
+											height: 300,
+										},
+									}}
+								>
+									<iframe
+										width="100%"
+										height="100%"
+										frameBorder="0"
+										scrolling="no"
+										marginHeight="0"
+										marginWidth="0"
+										src="https://www.openstreetmap.org/export/embed.html?bbox=79.73121643066408%2C12.774973346083751%2C80.63758850097658%2C13.391623526422052&amp;layer=mapnik"
+										style={{ borderRadius: "10px" }}
+										title="null"
+									/>
 								</Typography>
 							</Box>
 						</Box>
@@ -806,9 +819,13 @@ const useStyles = (theme) => ({
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "space-around",
-		[theme.breakpoints.down("md")]: {
+		[theme.breakpoints.down("sm")]: {
 			flexDirection: "column",
 			justifyContent: "space-between",
+		},
+		[theme.breakpoints.between("sm", "lg")]: {
+			flexDirection: "column",
+			justifyContent: "space-evenly",
 		},
 	},
 	landingIntro: {
@@ -830,7 +847,7 @@ const useStyles = (theme) => ({
 			fontWeight: 200,
 			lineHeight: 1.75,
 		},
-		[theme.breakpoints.down("md")]: {
+		[theme.breakpoints.down("sm")]: {
 			"& h2": {
 				fontSize: 42,
 				mt: "7.5rem",
@@ -838,6 +855,15 @@ const useStyles = (theme) => ({
 			"& p": {
 				fontSize: 20,
 			},
+		},
+		[theme.breakpoints.between("sm", "lg")]: {
+			"& h2": {
+				fontSize: 48,
+			},
+			"& p": {
+				fontSize: 28,
+			},
+			mb: -5,
 		},
 	},
 	landingBtn: {
@@ -870,9 +896,14 @@ const useStyles = (theme) => ({
 		position: "relative",
 		zIndex: 1,
 
-		[theme.breakpoints.down("md")]: {
+		[theme.breakpoints.down("sm")]: {
 			height: 200,
 			width: 200,
+		},
+
+		[theme.breakpoints.between("sm", "lg")]: {
+			height: 300,
+			width: 300,
 		},
 
 		"&:nth-of-type(1)": {
