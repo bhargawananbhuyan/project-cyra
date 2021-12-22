@@ -65,7 +65,7 @@ const App = () => {
 								component="section"
 								sx={{
 									mt: down,
-									transition: "all .1s ease",
+									transition: "all .2s ease",
 								}}
 							>
 								<Typography component="h2" variant="h1">
@@ -129,7 +129,7 @@ const App = () => {
 							},
 						}}
 					>
-						<Box sx={{ maxWidth: 500 }}>
+						<Box sx={{ maxWidth: 500 }} className="forFadeUp">
 							<Typography sx={{ fontSize: "1.25rem", fontWeight: "light" }}>
 								About us
 							</Typography>

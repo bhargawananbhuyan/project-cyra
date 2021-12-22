@@ -35,15 +35,19 @@ body {
 }
 .fadeUp1 {
 	transform: translateY(0rem) !important;
-	transition: all 0.8s ease !important;
+	transition: all 1s ease !important;
 }
 .fadeUp2 {
 	transform: translateY(0rem) !important;
-	transition: all 1s ease !important;
+	transition: all 1.1s ease !important;
 }
 .fadeUp3 {
 	transform: translateY(0rem) !important;
 	transition: all 1.2s ease !important;
+}
+.fadeUp4 {
+	transform: translateY(0rem) !important;
+	transition: all 1.3s ease !important;
 }
 @keyframes zeroToFull {
 	0% {
