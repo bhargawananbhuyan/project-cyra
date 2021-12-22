@@ -80,7 +80,16 @@ body {
 	.fadeLeft {
 		margin-right: 0px !important;
 	}
-	.active {
+	.active1 {
+		width: 300px !important;
+	}
+	.active2 {
+		width: 300px !important;
+	}
+	.active3 {
+		width: 300px !important;
+	}
+	.active4 {
 		width: 300px !important;
 	}
 }
