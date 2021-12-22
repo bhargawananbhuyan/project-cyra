@@ -45,3 +45,15 @@ body {
 		width: 100%;
 	}
 }
+
+@media screen and (max-width: 750px) {
+	.app {
+		overflow-x: hidden !important;
+	}
+	.fadeLeft {
+		margin-right: 0px !important;
+	}
+	.active {
+		width: 300px !important;
+	}
+}

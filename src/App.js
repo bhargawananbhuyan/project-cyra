@@ -49,13 +49,7 @@ const App = () => {
 				<Box sx={classes.landingContainer}>
 					<Box sx={classes.landingContent}>
 						<Box sx={classes.landingIntro} className="landingIntro">
-							<Box
-								component="section"
-								sx={{
-									mt: down,
-									transition: "all .25s ease",
-								}}
-							>
+							<Box component="section" sx={{ mt: down }}>
 								<Typography component="h2" variant="h1">
 									Cyra
 								</Typography>
@@ -100,6 +94,16 @@ const App = () => {
 							px: 3,
 							pt: 20,
 							pb: 15,
+							[theme.breakpoints.down("md")]: {
+								flexDirection: "column",
+								py: 12,
+								"& h3": {
+									fontSize: 32,
+									lineHeight: 1.5,
+								},
+								"& h5": { fontSize: 21 },
+								"& p": { fontSize: "1.2rem" },
+							},
 						}}
 					>
 						<Box sx={{ maxWidth: 500 }}>
@@ -134,6 +138,10 @@ const App = () => {
 												bottom: 7.5,
 												left: 0,
 												zIndex: -1,
+												[theme.breakpoints.down("md")]: {
+													width: 88,
+													bottom: 5,
+												},
 											},
 										}}
 									>
@@ -189,6 +197,13 @@ const App = () => {
 								gridTemplateColumns: "repeat(2, 1fr)",
 								gridTemplateRows: "repeat(2, 1fr)",
 								gap: 5,
+								[theme.breakpoints.down("md")]: {
+									display: "flex",
+									flexWrap: "wrap",
+									justifyContent: "center",
+									gap: 3.5,
+									mt: 10,
+								},
 							}}
 						>
 							{[1, 2, 3, 4].map((i) => (
@@ -213,7 +228,16 @@ const App = () => {
 				{/* services */}
 				<Box sx={classes.serviceContainer}>
 					<Box sx={classes.serviceContent}>
-						<Typography variant="h3">Services</Typography>
+						<Typography
+							variant="h3"
+							sx={{
+								[theme.breakpoints.down("md")]: {
+									fontSize: 32,
+								},
+							}}
+						>
+							Services
+						</Typography>
 
 						<Box sx={classes.serviceGrid}>
 							{[1, 2, 3, 4, 5, 6].map((i) => (
@@ -231,13 +255,23 @@ const App = () => {
 
 				{/* also */}
 				{/* container */}
-				<Box sx={{ height: "100vh", backgroundColor: colors.grey[50] }}>
+				<Box
+					sx={{
+						backgroundColor: colors.grey[50],
+						[theme.breakpoints.up("md")]: {
+							height: "100vh",
+						},
+					}}
+				>
 					<Box
 						sx={{
 							height: "100%",
 							display: "flex",
 							alignItems: "center",
 							justifyContent: "center",
+							[theme.breakpoints.down("md")]: {
+								flexDirection: "column-reverse",
+							},
 						}}
 					>
 						<Box
@@ -245,6 +279,10 @@ const App = () => {
 								display: "flex",
 								flexDirection: "column",
 								alignItems: "flex-end",
+								[theme.breakpoints.down("md")]: {
+									alignItems: "center",
+									justifyContent: "center",
+								},
 							}}
 						>
 							<Typography
@@ -261,6 +299,12 @@ const App = () => {
 									zIndex: 10,
 									lineHeight: 1.5,
 									transition: "1.25s ease",
+									[theme.breakpoints.down("md")]: {
+										px: 3.5,
+										py: 5,
+										textAlign: "center",
+										fontSize: 32,
+									},
 								}}
 							>
 								We also do buying and selling of properties.
@@ -277,6 +321,13 @@ const App = () => {
 									fontWeight: "light",
 									lineHeight: 1.75,
 									transform: "scale(1.25)",
+									[theme.breakpoints.down("md")]: {
+										textAlign: "center",
+										mr: 0,
+										fontSize: "1.25rem",
+										px: 3.5,
+										pt: 0,
+									},
 								}}
 							>
 								The farm project consists of one acre plots roughly costing from
@@ -284,13 +335,17 @@ const App = () => {
 							</Typography>
 
 							<Box
-								className="weAlsoText"
+								className="weAlsoBtn"
 								sx={{
 									height: 60,
 									width: 200,
 									backgroundColor: colors.yellow[800],
 									mb: -12.25,
 									mr: 7.5,
+									[theme.breakpoints.down("md")]: {
+										m: 0,
+										mb: 10,
+									},
 								}}
 							/>
 						</Box>
@@ -302,6 +357,11 @@ const App = () => {
 								transform: "skewX(10deg)",
 								transition: "1s ease",
 								backgroundColor: colors.yellow[800],
+								[theme.breakpoints.down("md")]: {
+									height: 350,
+									width: 350,
+									mt: 7.5,
+								},
 							}}
 						/>
 					</Box>
@@ -319,6 +379,14 @@ const App = () => {
 							mx: "auto",
 							px: 12.5,
 							py: 15,
+							[theme.breakpoints.down("md")]: {
+								px: 3.5,
+								py: 10,
+								"& h3": {
+									fontSize: 32,
+									mb: 5,
+								},
+							},
 						}}
 					>
 						<Typography variant="h3" sx={{ fontWeight: 900, mb: 7.5 }}>
@@ -331,6 +399,15 @@ const App = () => {
 								gridTemplateRows: "repeat(2, minmax(425px, 1fr))",
 								gridTemplateColumns: "repeat(3, minmax(400px, 1fr))",
 								gap: 3,
+								[theme.breakpoints.down("md")]: {
+									display: "flex",
+									flexWrap: "wrap",
+									justifyContent: "center",
+									"& div": {
+										height: 350,
+										width: 350,
+									},
+								},
 							}}
 						>
 							<Box
@@ -370,6 +447,14 @@ const App = () => {
 							px: 12.5,
 							py: 15,
 							mx: "auto",
+							[theme.breakpoints.down("md")]: {
+								px: 3.5,
+								py: 10,
+								"& h3": {
+									fontSize: 32,
+									mb: 5,
+								},
+							},
 						}}
 					>
 						<Typography variant="h3" sx={{ fontWeight: 900, mb: 7.5 }}>
@@ -381,6 +466,17 @@ const App = () => {
 								gridTemplateColumns: "repeat(2, 1fr)",
 								gridTemplateRows: "repeat(4, 1fr)",
 								gap: 7.5,
+								[theme.breakpoints.down("md")]: {
+									display: "flex",
+									flexDirection: "column",
+									gap: 5,
+									"& label": {
+										fontSize: "1.2rem",
+									},
+									"& input": {
+										fontSize: "1rem",
+									},
+								},
 							}}
 						>
 							<Box sx={{ gridRow: "1", gridColumn: "1" }}>
@@ -507,6 +603,10 @@ const App = () => {
 							py: 15,
 							maxWidth: 1600,
 							mx: "auto",
+							[theme.breakpoints.down("md")]: {
+								px: 3.5,
+								py: 10,
+							},
 						}}
 					>
 						<Box
@@ -517,13 +617,28 @@ const App = () => {
 								color: colors.grey[50],
 								gap: 7.5,
 								placeContent: "space-between",
+								[theme.breakpoints.down("md")]: {
+									display: "flex",
+									flexWrap: "wrap",
+									gap: 5,
+									"& .footer-header": {
+										fontSize: "1.35rem",
+									},
+									"& p": {
+										fontSize: "1.2rem",
+									},
+								},
 							}}
 						>
 							<Box sx={{ gridRow: "1", gridColumn: "1" }}>
-								<Typography sx={{ fontWeight: 900, fontSize: 27 }}>
+								<Typography
+									sx={{ fontWeight: 900, fontSize: 27 }}
+									className="footer-header"
+								>
 									Logo
 								</Typography>
 								<Typography
+									paragraph
 									sx={{
 										fontWeight: "light",
 										fontSize: 22,
@@ -538,10 +653,14 @@ const App = () => {
 							</Box>
 
 							<Box sx={{ gridRow: "1", gridColumn: "2" }}>
-								<Typography sx={{ fontWeight: 900, fontSize: 27 }}>
+								<Typography
+									sx={{ fontWeight: 900, fontSize: 27 }}
+									className="footer-header"
+								>
 									Contact
 								</Typography>
 								<Typography
+									paragraph
 									sx={{
 										fontWeight: "light",
 										fontSize: 22,
@@ -557,10 +676,14 @@ const App = () => {
 							</Box>
 
 							<Box sx={{ gridRow: "1/3", gridColumn: "3" }}>
-								<Typography sx={{ fontWeight: 900, fontSize: 27 }}>
+								<Typography
+									sx={{ fontWeight: 900, fontSize: 27 }}
+									className="footer-header"
+								>
 									Location
 								</Typography>
 								<Typography
+									paragraph
 									sx={{
 										backgroundColor: colors.yellow[800],
 										height: "100%",
@@ -585,10 +708,20 @@ const App = () => {
 							</Box>
 
 							<Box sx={{ gridRow: "2", gridColumn: "1" }}>
-								<Typography sx={{ fontWeight: 900, fontSize: 27 }}>
+								<Typography
+									sx={{
+										fontWeight: 900,
+										fontSize: 27,
+										[theme.breakpoints.down("md")]: {
+											mt: 10,
+										},
+									}}
+									className="footer-header"
+								>
 									Social Media
 								</Typography>
 								<Typography
+									paragraph
 									sx={{
 										fontWeight: "light",
 										fontSize: 22,
@@ -606,10 +739,14 @@ const App = () => {
 							</Box>
 
 							<Box sx={{ gridRow: "2", gridColumn: "2" }}>
-								<Typography sx={{ fontWeight: 900, fontSize: 27 }}>
+								<Typography
+									sx={{ fontWeight: 900, fontSize: 27 }}
+									className="footer-header"
+								>
 									Address
 								</Typography>
 								<Typography
+									paragraph
 									sx={{
 										fontWeight: "light",
 										fontSize: 22,
@@ -669,6 +806,10 @@ const useStyles = (theme) => ({
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "space-around",
+		[theme.breakpoints.down("md")]: {
+			flexDirection: "column",
+			justifyContent: "space-between",
+		},
 	},
 	landingIntro: {
 		maxWidth: 600,
@@ -689,6 +830,15 @@ const useStyles = (theme) => ({
 			fontWeight: 200,
 			lineHeight: 1.75,
 		},
+		[theme.breakpoints.down("md")]: {
+			"& h2": {
+				fontSize: 42,
+				mt: "7.5rem",
+			},
+			"& p": {
+				fontSize: 20,
+			},
+		},
 	},
 	landingBtn: {
 		textTransform: "capitalize",
@@ -699,12 +849,19 @@ const useStyles = (theme) => ({
 		height: 55,
 		width: 165,
 		borderRadius: 2.5,
+		[theme.breakpoints.down("md")]: {
+			height: 45,
+			width: 135,
+		},
 	},
 	anchorGrid: {
 		display: "grid",
 		gridTemplateRows: "repeat(2, 1fr)",
 		gridTemplateColumns: "repeat(2, 1fr)",
 		alignSelf: "flex-end",
+		[theme.breakpoints.down("md")]: {
+			alignSelf: "center",
+		},
 	},
 	anchorCard: {
 		height: 350,
@@ -712,6 +869,11 @@ const useStyles = (theme) => ({
 		p: 4.5,
 		position: "relative",
 		zIndex: 1,
+
+		[theme.breakpoints.down("md")]: {
+			height: 200,
+			width: 200,
+		},
 
 		"&:nth-of-type(1)": {
 			gridColumn: 1,
@@ -747,6 +909,9 @@ const useStyles = (theme) => ({
 		"& p": {
 			fontSize: 27,
 			color: colors.grey[50],
+			[theme.breakpoints.down("md")]: {
+				fontSize: 20,
+			},
 		},
 	},
 	aboutCard: {
@@ -755,6 +920,11 @@ const useStyles = (theme) => ({
 		position: "relative",
 		"&:nth-of-type(2)": { mt: 5 },
 		"&:nth-of-type(3)": { mt: -5 },
+		[theme.breakpoints.down("md")]: {
+			"&:nth-of-type(2), &:nth-of-type(3)": { mt: 0 },
+			width: 300,
+			height: 350,
+		},
 	},
 	aboutBtn: {
 		textTransform: "capitalize",
@@ -765,9 +935,13 @@ const useStyles = (theme) => ({
 		height: 55,
 		width: 165,
 		borderRadius: 2.5,
+		[theme.breakpoints.down("md")]: {
+			height: 45,
+			width: 135,
+			mt: 3.5,
+		},
 	},
 	serviceContainer: {
-		// height: "100vh",
 		backgroundColor: colors.grey[50],
 	},
 	serviceContent: {
@@ -776,11 +950,20 @@ const useStyles = (theme) => ({
 		px: 12.5,
 		py: 15,
 		"& h3": { fontWeight: 900, mb: 7.5 },
+		[theme.breakpoints.down("md")]: {
+			px: 3.5,
+			py: 10,
+		},
 	},
 	serviceGrid: {
 		display: "grid",
 		gridTemplateColumns: "repeat(auto-fill, minmax(350px, 1fr))",
 		gap: 3,
+		[theme.breakpoints.down("md")]: {
+			display: "flex",
+			flexWrap: "wrap",
+			justifyContent: "center",
+		},
 	},
 	serviceCard: {
 		height: 450,
@@ -800,6 +983,10 @@ const useStyles = (theme) => ({
 			fontSize: 20,
 			boxShadow: "0px 0px 15px -7.5px rgb(0,0,0)",
 		},
+		[theme.breakpoints.down("md")]: {
+			width: 350,
+			height: 350,
+		},
 	},
 	submitBtn: {
 		textTransform: "capitalize",
@@ -810,6 +997,10 @@ const useStyles = (theme) => ({
 		height: 60,
 		width: 185,
 		borderRadius: 2.5,
+		[theme.breakpoints.down("md")]: {
+			height: 45,
+			width: 150,
+		},
 	},
 });
 
