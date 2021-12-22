@@ -37,7 +37,7 @@ body {
 	transition: 1.5s ease-in;
 }
 .skewX {
-	transform: skew(0deg, 0deg) !important;
+	transform: skew(0deg, 0deg) translateZ(0rem) !important;
 	transition: 1.75s ease;
 }
 .fadeZoom {

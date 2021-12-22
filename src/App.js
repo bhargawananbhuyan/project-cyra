@@ -399,7 +399,8 @@ const App = () => {
 							sx={{
 								height: 650,
 								width: 650,
-								transform: "skew(0deg, 3.5deg)",
+								transform: "skew(0deg, 3.5deg) translateZ(-2rem)",
+								transformOrigin: "right",
 								transition: "1s ease",
 								backgroundColor: colors.yellow[800],
 								boxShadow: `10px 10px 50px -15px ${colors.yellow[800]}`,
