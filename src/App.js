@@ -97,8 +97,24 @@ const App = () => {
 						</Box>
 
 						<Box sx={{ ...classes.anchorGrid, opacity: agDisplay }}>
-							<Box sx={classes.anchorCard} id="contactUsCard">
+							<Box
+								sx={{
+									...classes.anchorCard,
+									position: "relative",
+									"& img": {
+										position: "absolute",
+										right: 0,
+										bottom: 0,
+										maxWidth: 350,
+										[theme.breakpoints.down("sm")]: {
+											maxWidth: 200,
+										},
+									},
+								}}
+								id="contactUsCard"
+							>
 								<Typography paragraph>Contact us</Typography>
+								<img src="/assets/contact.png" height="auto" alt="" />
 							</Box>
 							<Box
 								sx={{
@@ -1004,6 +1020,7 @@ const useStyles = (theme, agDisplay) => ({
 			lineHeight: 1.75,
 		},
 		[theme.breakpoints.down("sm")]: {
+			height: 425,
 			"& h2": {
 				fontSize: 42,
 				mt: "7.5rem",
