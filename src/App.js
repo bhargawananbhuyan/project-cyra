@@ -105,7 +105,7 @@ const App = () => {
 										position: "absolute",
 										right: 0,
 										bottom: 0,
-										maxWidth: 350,
+										maxWidth: 475,
 										[theme.breakpoints.down("sm")]: {
 											maxWidth: 200,
 										},
