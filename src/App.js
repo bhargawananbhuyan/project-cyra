@@ -44,6 +44,12 @@ const App = () => {
 		document.querySelectorAll(".forFadeLeft").forEach((el) => {
 			io("fadeLeft2").observe(el);
 		});
+		document.querySelectorAll(".forGalleryBox").forEach((el, i) => {
+			io(`fadeUp${i + 1}`).observe(el);
+		});
+		document.querySelectorAll(".forOpacity1").forEach((el) => {
+			io("toOpacity1").observe(el);
+		});
 
 		document.addEventListener("scroll", () => {
 			setDown(window.scrollY / 10);
@@ -94,8 +100,28 @@ const App = () => {
 							<Box sx={classes.anchorCard} id="contactUsCard">
 								<Typography paragraph>Contact us</Typography>
 							</Box>
-							<Box sx={{ ...classes.anchorCard, position: "relative" }}>
+							<Box
+								sx={{
+									...classes.anchorCard,
+									position: "relative",
+									"& img": {
+										position: "absolute",
+										right: 0,
+										top: -120,
+										maxWidth: 450,
+										[theme.breakpoints.down("sm")]: {
+											maxWidth: 250,
+											top: -75,
+										},
+										[theme.breakpoints.between("sm", "lg")]: {
+											maxWidth: 375,
+											top: -100,
+										},
+									},
+								}}
+							>
 								<Typography paragraph>About us</Typography>
+								<img src={"/assets/hand.png"} height={"auto"} alt="" />
 							</Box>
 						</Box>
 					</Box>
@@ -475,6 +501,7 @@ const App = () => {
 							}}
 						>
 							<Box
+								className="forGalleryBox"
 								sx={{
 									backgroundColor: colors.grey[400],
 									gridRow: "1",
@@ -488,27 +515,35 @@ const App = () => {
 										},
 									},
 									overflow: "hidden",
+									transform: "translateY(2rem)",
+									opacity: 0,
 								}}
 							>
 								<img
-									src={"/assets/landing.jpg"}
+									src={"/assets/landing.png"}
 									width="100%"
 									height="100%"
 									alt=""
 								/>
 							</Box>
 							<Box
+								className="forGalleryBox"
 								sx={{
 									backgroundColor: colors.grey[400],
 									gridRow: "2",
 									gridColumn: "1",
+									transform: "translateY(2rem)",
+									opacity: 0,
 								}}
 							/>
 							<Box
+								className="forGalleryBox"
 								sx={{
 									backgroundColor: colors.grey[400],
 									gridRow: "1/3",
 									gridColumn: "2/4",
+									transform: "translateY(2rem)",
+									opacity: 0,
 								}}
 							/>
 						</Box>
@@ -740,9 +775,15 @@ const App = () => {
 										fontSize: "1.2rem",
 									},
 								},
+								"& .forOpacity1": {
+									opacity: 0,
+								},
 							}}
 						>
-							<Box sx={{ gridRow: "1", gridColumn: "1" }}>
+							<Box
+								className="forOpacity1"
+								sx={{ gridRow: "1", gridColumn: "1" }}
+							>
 								<Typography
 									sx={{ fontWeight: 900, fontSize: 27 }}
 									className="footer-header"
@@ -764,7 +805,10 @@ const App = () => {
 								</Typography>
 							</Box>
 
-							<Box sx={{ gridRow: "1", gridColumn: "2" }}>
+							<Box
+								className="forOpacity1"
+								sx={{ gridRow: "1", gridColumn: "2" }}
+							>
 								<Typography
 									sx={{ fontWeight: 900, fontSize: 27 }}
 									className="footer-header"
@@ -787,7 +831,10 @@ const App = () => {
 								</Typography>
 							</Box>
 
-							<Box sx={{ gridRow: "2", gridColumn: "1" }}>
+							<Box
+								className="forOpacity1"
+								sx={{ gridRow: "2", gridColumn: "1" }}
+							>
 								<Typography
 									sx={{
 										fontWeight: 900,
@@ -815,7 +862,10 @@ const App = () => {
 								</Typography>
 							</Box>
 
-							<Box sx={{ gridRow: "2", gridColumn: "2" }}>
+							<Box
+								className="forOpacity1"
+								sx={{ gridRow: "2", gridColumn: "2" }}
+							>
 								<Typography
 									sx={{ fontWeight: 900, fontSize: 27 }}
 									className="footer-header"
@@ -838,7 +888,10 @@ const App = () => {
 								</Typography>
 							</Box>
 
-							<Box sx={{ gridRow: "1/3", gridColumn: "3" }}>
+							<Box
+								className="forOpacity1"
+								sx={{ gridRow: "1/3", gridColumn: "3" }}
+							>
 								<Typography
 									sx={{ fontWeight: 900, fontSize: 27 }}
 									className="footer-header"
@@ -894,9 +947,14 @@ const useStyles = (theme, agDisplay) => ({
 			left: 0,
 			width: "100%",
 			height: "100%",
-			backgroundColor: colors.grey[700],
+			backgroundImage: 'url("/assets/landing.png")',
 			animation: "zeroToFull 1s linear",
-			objectFit: "fill",
+			backgroundRepeat: "no-repeat",
+			backgroundSize: "100vw 100vh",
+			filter: "brightness(50%)",
+			[theme.breakpoints.down("xl")]: {
+				backgroundSize: "cover",
+			},
 		},
 		"&::before": {
 			content: `""`,
