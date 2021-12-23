@@ -107,15 +107,14 @@ const App = () => {
 									"& img": {
 										position: "absolute",
 										right: 0,
-										top: -120,
+										bottom: -10,
 										maxWidth: 450,
 										[theme.breakpoints.down("sm")]: {
 											maxWidth: 250,
-											top: -75,
+											bottom: -5,
 										},
 										[theme.breakpoints.between("sm", "lg")]: {
 											maxWidth: 375,
-											top: -100,
 										},
 									},
 								}}
