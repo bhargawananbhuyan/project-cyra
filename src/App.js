@@ -597,7 +597,7 @@ const App = () => {
 								}}
 							>
 								<img
-									src={"/assets/landing.png"}
+									src={"/assets/Cyra website-10.png"}
 									width="100%"
 									height="100%"
 									alt=""
