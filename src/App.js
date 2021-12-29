@@ -1024,7 +1024,7 @@ const useStyles = (theme, agDisplay) => ({
 			left: 0,
 			width: "100%",
 			height: "100%",
-			background: 'url("/assets/Cyra website-02-02.png")',
+			background: 'url("/assets/landing.png")',
 			animation: "zeroToFull 1s linear",
 			backgroundRepeat: "no-repeat",
 			backgroundSize: "100vw 100vh",
