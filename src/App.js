@@ -105,7 +105,7 @@ const App = () => {
 										position: "absolute",
 										right: 0,
 										bottom: 0,
-										maxWidth: 475,
+										maxWidth: 350,
 										[theme.breakpoints.down("sm")]: {
 											maxWidth: 200,
 										},
@@ -114,7 +114,7 @@ const App = () => {
 								id="contactUsCard"
 							>
 								<Typography paragraph>Contact us</Typography>
-								<img src="/assets/contact.png" height="auto" alt="" />
+								<img src="/assets/Cyra website-03.png" height="auto" alt="" />
 							</Box>
 							<Box
 								sx={{
@@ -279,7 +279,12 @@ const App = () => {
 								},
 							}}
 						>
-							{[1, 2, 3, 4].map((i) => (
+							{[
+								"Cyra website-07.png",
+								"Cyra website-04.png",
+								"Cyra website-06.png",
+								"Cyra website-05.png",
+							].map((pic, i) => (
 								<Box key={i} sx={classes.aboutCard}>
 									<Box
 										className="aboutCard"
@@ -289,7 +294,8 @@ const App = () => {
 											left: 0,
 											width: 0,
 											height: "100%",
-											backgroundColor: colors.grey[400],
+											background: `url('/assets/${pic}')`,
+											backgroundSize: "cover",
 										}}
 									/>
 								</Box>
@@ -324,15 +330,48 @@ const App = () => {
 						</Typography>
 
 						<Box sx={classes.serviceGrid}>
-							{[1, 2, 3, 4, 5, 6].map((i) => (
-								<Tilt key={i} tiltReverse={true} perspective={500}>
-									<Box sx={classes.serviceCard}>
-										<Typography paragraph>
-											Property Management Services
-										</Typography>
-									</Box>
-								</Tilt>
-							))}
+							<Tilt tiltReverse={true} perspective={500}>
+								<Box sx={{ ...classes.serviceCard, ...classes.serviceBg1 }}>
+									<Typography paragraph>
+										Property Management Services
+									</Typography>
+								</Box>
+							</Tilt>
+							<Tilt tiltReverse={true} perspective={500}>
+								<Box sx={{ ...classes.serviceCard, ...classes.serviceBg2 }}>
+									<Typography paragraph>
+										Property Management Services
+									</Typography>
+								</Box>
+							</Tilt>
+							<Tilt tiltReverse={true} perspective={500}>
+								<Box sx={{ ...classes.serviceCard, ...classes.serviceBg3 }}>
+									<Typography paragraph>
+										Property Management Services
+									</Typography>
+								</Box>
+							</Tilt>
+							<Tilt tiltReverse={true} perspective={500}>
+								<Box sx={{ ...classes.serviceCard, ...classes.serviceBg4 }}>
+									<Typography paragraph>
+										Property Management Services
+									</Typography>
+								</Box>
+							</Tilt>
+							<Tilt tiltReverse={true} perspective={500}>
+								<Box sx={{ ...classes.serviceCard, ...classes.serviceBg5 }}>
+									<Typography paragraph>
+										Property Management Services
+									</Typography>
+								</Box>
+							</Tilt>
+							<Tilt tiltReverse={true} perspective={500}>
+								<Box sx={{ ...classes.serviceCard, ...classes.serviceBg6 }}>
+									<Typography paragraph>
+										Property Management Services
+									</Typography>
+								</Box>
+							</Tilt>
 						</Box>
 					</Box>
 				</Box>
@@ -445,13 +484,36 @@ const App = () => {
 								transition: "1s ease",
 								backgroundColor: colors.yellow[800],
 								boxShadow: `10px 10px 50px -15px ${colors.yellow[800]}`,
+								position: "relative",
 								[theme.breakpoints.down("md")]: {
 									height: 350,
 									width: 350,
 									mt: 7.5,
 								},
+								"& img:nth-of-type(1)": {
+									position: "absolute",
+									bottom: 0,
+									right: 0,
+									width: 650,
+									[theme.breakpoints.down("md")]: {
+										width: 350,
+									},
+								},
+								"& img:nth-of-type(2)": {
+									position: "absolute",
+									top: -85,
+									right: -85,
+									width: 400,
+									[theme.breakpoints.down("md")]: {
+										width: 250,
+									},
+								},
+								overflow: "hidden",
 							}}
-						/>
+						>
+							<img src="/assets/contact.png" height="auto" alt="" />
+							<img src="/assets/Cyra website-09.png" height="auto" alt="" />
+						</Box>
 					</Box>
 				</Box>
 
@@ -962,7 +1024,7 @@ const useStyles = (theme, agDisplay) => ({
 			left: 0,
 			width: "100%",
 			height: "100%",
-			backgroundImage: 'url("/assets/landing.png")',
+			background: 'url("/assets/Cyra website-02-02.png")',
 			animation: "zeroToFull 1s linear",
 			backgroundRepeat: "no-repeat",
 			backgroundSize: "100vw 100vh",
@@ -1088,7 +1150,7 @@ const useStyles = (theme, agDisplay) => ({
 				position: "absolute",
 				top: 0,
 				left: 0,
-				backgroundColor: colors.yellow[800],
+				backgroundColor: colors.yellow[900],
 				zIndex: -1,
 				animation: agDisplay && "zeroToFull .5s linear",
 			},
@@ -1178,7 +1240,6 @@ const useStyles = (theme, agDisplay) => ({
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "center",
-		backgroundColor: colors.grey[400],
 		transition: ".25s ease",
 		transformStyle: "preserve-3d",
 		"& p": {
@@ -1190,13 +1251,37 @@ const useStyles = (theme, agDisplay) => ({
 			fontWeight: "bold",
 			color: colors.grey[500],
 			fontSize: 20,
-			boxShadow: "0px 0px 30px -15px rgb(0,0,0)",
+			boxShadow: "0px 0px 50px -20px rgb(0,0,0)",
 			transform: "translateZ(60px)",
 		},
 		[theme.breakpoints.down("md")]: {
 			width: 350,
 			height: 350,
 		},
+	},
+	serviceBg1: {
+		background: "url('/assets/Cyra website-10.png')",
+		backgroundSize: "cover",
+	},
+	serviceBg2: {
+		background: "url('/assets/Cyra website-11.png')",
+		backgroundSize: "cover",
+	},
+	serviceBg3: {
+		background: "url('/assets/Cyra website-12.png')",
+		backgroundSize: "cover",
+	},
+	serviceBg4: {
+		background: "url('/assets/Cyra website-15.png')",
+		backgroundSize: "cover",
+	},
+	serviceBg5: {
+		background: "url('/assets/Cyra website-14.png')",
+		backgroundSize: "cover",
+	},
+	serviceBg6: {
+		background: "url('/assets/Cyra website-13.png')",
+		backgroundSize: "cover",
 	},
 	submitBtn: {
 		textTransform: "capitalize",
