@@ -184,7 +184,7 @@ const App = () => {
 							</Typography>
 							<Typography
 								variant="h3"
-								sx={{ fontWeight: 900, mt: 1, mb: 5, lineHeight: 1.3 }}
+								sx={{ fontWeight: 900, mt: 1, mb: 5, lineHeight: 1.5 }}
 							>
 								The meaning of{" "}
 								<div
@@ -220,7 +220,7 @@ const App = () => {
 										CYRA
 									</Box>
 								</div>{" "}
-								comes from greek meaning comes from the <i>SUN</i>.
+								comes from greek meaning the <i>SUN</i>.
 							</Typography>
 							<Box className="forFadeUp">
 								<Typography variant="h5" sx={{ fontWeight: 900, mb: 2 }}>
@@ -332,44 +332,32 @@ const App = () => {
 						<Box sx={classes.serviceGrid}>
 							<Tilt tiltReverse={true} perspective={500}>
 								<Box sx={{ ...classes.serviceCard, ...classes.serviceBg1 }}>
-									<Typography paragraph>
-										Property Management Services
-									</Typography>
+									<Typography paragraph>Property marketing services</Typography>
 								</Box>
 							</Tilt>
 							<Tilt tiltReverse={true} perspective={500}>
 								<Box sx={{ ...classes.serviceCard, ...classes.serviceBg2 }}>
-									<Typography paragraph>
-										Property Management Services
-									</Typography>
+									<Typography paragraph>Property management</Typography>
 								</Box>
 							</Tilt>
 							<Tilt tiltReverse={true} perspective={500}>
 								<Box sx={{ ...classes.serviceCard, ...classes.serviceBg3 }}>
-									<Typography paragraph>
-										Property Management Services
-									</Typography>
+									<Typography paragraph>Legal advisory</Typography>
 								</Box>
 							</Tilt>
 							<Tilt tiltReverse={true} perspective={500}>
 								<Box sx={{ ...classes.serviceCard, ...classes.serviceBg4 }}>
-									<Typography paragraph>
-										Property Management Services
-									</Typography>
+									<Typography paragraph>Joint ventures</Typography>
 								</Box>
 							</Tilt>
 							<Tilt tiltReverse={true} perspective={500}>
 								<Box sx={{ ...classes.serviceCard, ...classes.serviceBg5 }}>
-									<Typography paragraph>
-										Property Management Services
-									</Typography>
+									<Typography paragraph>Property advisory</Typography>
 								</Box>
 							</Tilt>
 							<Tilt tiltReverse={true} perspective={500}>
 								<Box sx={{ ...classes.serviceCard, ...classes.serviceBg6 }}>
-									<Typography paragraph>
-										Property Management Services
-									</Typography>
+									<Typography paragraph>Legal advisory</Typography>
 								</Box>
 							</Tilt>
 						</Box>
@@ -705,7 +693,7 @@ const App = () => {
 									Enter your full name
 								</Typography>
 								<Input
-									placeholder="Name"
+									placeholder="Full name"
 									fullWidth
 									sx={{ py: 1, fontSize: 20 }}
 								/>
@@ -721,10 +709,10 @@ const App = () => {
 										fontSize: 24,
 									}}
 								>
-									Enter your full name
+									Enter your phone number
 								</Typography>
 								<Input
-									placeholder="Name"
+									placeholder="Phone number"
 									fullWidth
 									sx={{ py: 1, fontSize: 20 }}
 								/>
@@ -740,10 +728,10 @@ const App = () => {
 										fontSize: 24,
 									}}
 								>
-									Enter your full name
+									Enter your email ID
 								</Typography>
 								<Input
-									placeholder="Name"
+									placeholder="Email ID"
 									fullWidth
 									sx={{ py: 1, fontSize: 20 }}
 								/>
@@ -759,10 +747,10 @@ const App = () => {
 										fontSize: 24,
 									}}
 								>
-									Enter your full name
+									Enter your phone number
 								</Typography>
 								<Input
-									placeholder="Name"
+									placeholder="Phone number"
 									fullWidth
 									sx={{ py: 1, fontSize: 20 }}
 								/>
@@ -778,10 +766,10 @@ const App = () => {
 										fontSize: 24,
 									}}
 								>
-									Enter your full name
+									Enter your message here
 								</Typography>
 								<Input
-									placeholder="Name"
+									placeholder="Message"
 									fullWidth
 									sx={{ py: 1, fontSize: 20 }}
 								/>
@@ -1246,11 +1234,11 @@ const useStyles = (theme, agDisplay) => ({
 			height: 175,
 			maxWidth: 175,
 			width: "100%",
-			p: 2,
-			backgroundColor: colors.grey[50],
+			p: 2.5,
+			backgroundColor: "rgba(255,255,255,.875)",
 			fontWeight: "bold",
 			color: colors.grey[500],
-			fontSize: 20,
+			fontSize: 21,
 			boxShadow: "0px 0px 50px -20px rgb(0,0,0)",
 			transform: "translateZ(60px)",
 		},
