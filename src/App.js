@@ -114,7 +114,7 @@ const App = () => {
 								id="contactUsCard"
 							>
 								<Typography paragraph>Contact us</Typography>
-								<img src="/assets/Cyra website-03.png" height="auto" alt="" />
+								<img src="/assets/contact us-02.png" height="auto" alt="" />
 							</Box>
 							<Box
 								sx={{
