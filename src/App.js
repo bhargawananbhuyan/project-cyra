@@ -136,7 +136,7 @@ const App = () => {
 								}}
 							>
 								<Typography paragraph>About us</Typography>
-								<img src={"/assets/hand.png"} height={"auto"} alt="" />
+								<img src={"/assets/contact.png"} height={"auto"} alt="" />
 							</Box>
 						</Box>
 					</Box>
@@ -332,32 +332,34 @@ const App = () => {
 						<Box sx={classes.serviceGrid}>
 							<Tilt tiltReverse={true} perspective={500}>
 								<Box sx={{ ...classes.serviceCard, ...classes.serviceBg1 }}>
-									<Typography paragraph>Property marketing services</Typography>
+									<Typography paragraph>
+										Land development & layout promotion
+									</Typography>
 								</Box>
 							</Tilt>
 							<Tilt tiltReverse={true} perspective={500}>
 								<Box sx={{ ...classes.serviceCard, ...classes.serviceBg2 }}>
-									<Typography paragraph>Property management</Typography>
+									<Typography paragraph>Farm project development</Typography>
 								</Box>
 							</Tilt>
 							<Tilt tiltReverse={true} perspective={500}>
 								<Box sx={{ ...classes.serviceCard, ...classes.serviceBg3 }}>
-									<Typography paragraph>Legal advisory</Typography>
+									<Typography paragraph>Construction</Typography>
 								</Box>
 							</Tilt>
 							<Tilt tiltReverse={true} perspective={500}>
 								<Box sx={{ ...classes.serviceCard, ...classes.serviceBg4 }}>
-									<Typography paragraph>Joint ventures</Typography>
+									<Typography paragraph>Property management</Typography>
 								</Box>
 							</Tilt>
 							<Tilt tiltReverse={true} perspective={500}>
 								<Box sx={{ ...classes.serviceCard, ...classes.serviceBg5 }}>
-									<Typography paragraph>Property advisory</Typography>
+									<Typography paragraph>Legal advisory</Typography>
 								</Box>
 							</Tilt>
 							<Tilt tiltReverse={true} perspective={500}>
 								<Box sx={{ ...classes.serviceCard, ...classes.serviceBg6 }}>
-									<Typography paragraph>Legal advisory</Typography>
+									<Typography paragraph>Property renovation</Typography>
 								</Box>
 							</Tilt>
 						</Box>
@@ -499,7 +501,7 @@ const App = () => {
 								overflow: "hidden",
 							}}
 						>
-							<img src="/assets/contact.png" height="auto" alt="" />
+							<img src="/assets/hand.png" height="auto" alt="" />
 							<img src="/assets/Cyra website-09.png" height="auto" alt="" />
 						</Box>
 					</Box>
@@ -1238,7 +1240,7 @@ const useStyles = (theme, agDisplay) => ({
 			backgroundColor: "rgba(255,255,255,.875)",
 			fontWeight: "bold",
 			color: colors.grey[500],
-			fontSize: 21,
+			fontSize: 20,
 			boxShadow: "0px 0px 50px -20px rgb(0,0,0)",
 			transform: "translateZ(60px)",
 		},
