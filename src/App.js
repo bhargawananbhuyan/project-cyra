@@ -1062,6 +1062,7 @@ const useStyles = (theme, agDisplay, showNav) => ({
 
       "& a": {
         fontSize: 22,
+        fontWeight: "bold",
         textDecoration: "none",
         color: colors.grey[900],
       },
