@@ -116,6 +116,7 @@ const App = () => {
                   variant="contained"
                   disableElevation
                   sx={classes.landingBtn}
+                  href="/#contact"
                 >
                   Get in touch
                 </Button>
@@ -139,7 +140,9 @@ const App = () => {
                 }}
                 id="contactUsCard"
               >
-                <Typography paragraph>Contact us</Typography>
+                <Typography paragraph component="a" href="/#services">
+                  Services
+                </Typography>
                 <img src="/assets/contact us-02.png" height="auto" alt="" />
               </Box>
               <Box
@@ -161,7 +164,9 @@ const App = () => {
                   },
                 }}
               >
-                <Typography paragraph>About us</Typography>
+                <Typography paragraph component="a" href="/#about">
+                  About us
+                </Typography>
                 <img src={"/assets/contact.png"} height={"auto"} alt="" />
               </Box>
             </Box>
@@ -288,6 +293,7 @@ const App = () => {
                 variant="contained"
                 disableElevation
                 disableRipple
+                href="/#contact"
               >
                 Contact us
               </Button>
@@ -1231,9 +1237,10 @@ const useStyles = (theme, agDisplay, showNav) => ({
       },
     },
 
-    "& p": {
+    "& a": {
       fontSize: 27,
       color: colors.grey[50],
+      textDecoration: "none",
       [theme.breakpoints.down("md")]: {
         fontSize: 20,
       },
